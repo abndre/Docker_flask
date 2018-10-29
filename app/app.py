@@ -1,5 +1,7 @@
 from flask import Flask, request
 from flask import jsonify
+import sys
+
 import udptest
 
 app = Flask(__name__)
@@ -22,7 +24,8 @@ def udpproduction():
     bar = request.args.to_dict()
     url = bar['url']
     cont = bar['cont']
-    test = udptest.testudp()
+
+    test = udptest.testudp(hostname=url,count=cont)
     test = jsonify(test)
     '''
     return e.g.
